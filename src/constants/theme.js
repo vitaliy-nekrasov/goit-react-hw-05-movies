@@ -2,9 +2,10 @@ export const theme = {
   colors: {
     black: '#000',
     white: '#fff',
-    green: '#2ee59d',
-    yellow: '#ecec0a',
-    red: '#d50c0c',
+    header: '#5d78e2ca',
+    button: '#52d290',
+    hover: '#ff9122',
+    filmCard: '#d6d6d6',
   },
   space: [
     '0px',
@@ -32,6 +33,7 @@ export const theme = {
   },
   fontWeights: {
     normal: 400,
+    medium: 500,
     semiBold: 600,
     bold: 700,
   },
