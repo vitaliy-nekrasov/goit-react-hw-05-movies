@@ -3,8 +3,8 @@ export const theme = {
     black: '#000',
     white: '#fff',
     header: '#5d78e2ca',
-    button: '#52d290',
-    hover: '#ff9122',
+    button: '#9cbf00',
+    hover: '#ff6f00',
     filmCard: '#d6d6d6',
   },
   space: [

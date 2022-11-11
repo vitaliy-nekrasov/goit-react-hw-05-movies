@@ -7,9 +7,10 @@ export const Section = styled.section`
 `;
 
 export const Title = styled.h1`
+  color: ${p => p.theme.colors.hover};
   padding-bottom: ${p => p.theme.space[5]};
   text-align: center;
-  text-shadow: 5px 4px 0px rgba(0, 0, 0, 0.15);
+  text-shadow: 5px 4px 0px rgba(255, 255, 255, 0.168);
 `;
 
 export const Gallery = styled.div`

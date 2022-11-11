@@ -5,10 +5,6 @@ export const Wrapper = styled.div`
   grid-template-rows: 100px 1fr;
 `;
 
-export const Movie = styled.div`
-  height: 100vh;
-`;
-
 export const Form = styled.form`
   padding-top: ${p => p.theme.space[5]};
   padding-bottom: ${p => p.theme.space[5]};
@@ -24,7 +20,7 @@ export const Input = styled.input`
   padding-left: ${p => p.theme.space[3]};
   border-radius: ${p => p.theme.space[2]};
   border-style: solid;
-  border-color: ${p => p.theme.colors.white};
+  border-color: ${p => p.theme.colors.hover};
   margin-left: ${p => p.theme.space[3]};
   margin-right: ${p => p.theme.space[3]};
   background-color: inherit;

@@ -21,8 +21,7 @@ export const ListItem = styled.li`
 export const Header = styled.header`
   padding-top: ${p => p.theme.space[5]};
   padding-bottom: ${p => p.theme.space[5]};
-  background-color: ${p => p.theme.colors.header};
-  border-bottom: ${p => p.theme.space[1]} solid #d6d6d6;
+  border-bottom: ${p => p.theme.space[1]} solid ${p => p.theme.colors.hover};
 `;
 
 export const StyledLink = styled(NavLink)`
@@ -50,6 +49,5 @@ export const Main = styled.main`
   padding-right: ${p => p.theme.space[5]};
   margin-left: auto;
   margin-right: auto;
-  background-color: ${p => p.theme.colors.header};
   height: 100%;
 `;

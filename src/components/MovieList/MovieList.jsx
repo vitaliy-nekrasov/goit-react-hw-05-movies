@@ -5,6 +5,7 @@ import {
   Poster,
   FilmTitle,
 } from './MovieList.styled';
+import PropTypes from 'prop-types';
 
 export function MovieList({ items }) {
   return (
@@ -23,3 +24,7 @@ export function MovieList({ items }) {
     </Gallery>
   );
 }
+
+MovieList.propTypes = {
+  items: PropTypes.array.isRequired,
+};
