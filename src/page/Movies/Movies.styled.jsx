@@ -3,6 +3,10 @@ import styled from 'styled-components';
 export const Wrapper = styled.div`
   display: grid;
   grid-template-rows: 100px 1fr;
+  padding-left: ${p => p.theme.space[5]};
+  padding-right: ${p => p.theme.space[5]};
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const Form = styled.form`

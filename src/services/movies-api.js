@@ -25,3 +25,11 @@ export async function getMoviesById(id) {
   const result = await resp.data;
   return result;
 }
+
+export async function getMoviesCast(id) {
+  const resp = await axios.get(
+    `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${API_KEY}&language=en-US`
+  );
+  const result = await resp.data.cast;
+  return result;
+}

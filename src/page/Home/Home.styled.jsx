@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 export const Section = styled.section`
   padding-top: ${p => p.theme.space[5]};
   padding-bottom: ${p => p.theme.space[5]};
+  padding-left: ${p => p.theme.space[5]};
+  padding-right: ${p => p.theme.space[5]};
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 export const Title = styled.h1`

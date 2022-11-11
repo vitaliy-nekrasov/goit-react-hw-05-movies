@@ -1,29 +1,23 @@
-import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
-export const Nav = styled.nav`
+export const Wrapper = styled.div`
+  border-bottom: ${p => p.theme.space[1]} solid ${p => p.theme.colors.hover};
   padding-left: ${p => p.theme.space[5]};
   padding-right: ${p => p.theme.space[5]};
-  margin-left: auto;
-  margin-right: auto;
+  padding-bottom: ${p => p.theme.space[5]};
+  padding-top: ${p => p.theme.space[4]};
 `;
-
+export const Title = styled.h2`
+  margin-bottom: ${p => p.theme.space[4]};
+  font-size: 26px;
+`;
 export const List = styled.ul`
   display: flex;
 `;
-
 export const ListItem = styled.li`
-  &:not(:last-child) {
-    margin-right: ${p => p.theme.space[4]};
-  }
+  margin-right: ${p => p.theme.space[3]};
 `;
-
-export const Header = styled.header`
-  padding-top: ${p => p.theme.space[5]};
-  padding-bottom: ${p => p.theme.space[5]};
-  border-bottom: ${p => p.theme.space[1]} solid ${p => p.theme.colors.hover};
-`;
-
 export const StyledLink = styled(NavLink)`
   color: ${p => p.theme.colors.white};
   background-color: ${p => p.theme.colors.button};
@@ -43,5 +37,3 @@ export const StyledLink = styled(NavLink)`
     background-color: ${p => p.theme.colors.hover};
   }
 `;
-
-export const Main = styled.main``;

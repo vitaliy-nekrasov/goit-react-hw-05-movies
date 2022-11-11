@@ -25,7 +25,7 @@ export function Movies() {
 
   const onSubmit = e => {
     e.preventDefault();
-    const value = e.target.search.value;
+    const value = e.target.search.value.trim();
     setSearchParams(value !== '' ? { query: value } : {});
     e.target.reset();
   };
@@ -44,6 +44,7 @@ export function Movies() {
         ) : (
           <Error message={error} />
         )}
+        {}
       </Wrapper>
     </section>
   );

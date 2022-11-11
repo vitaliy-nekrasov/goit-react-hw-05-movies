@@ -1,6 +1,20 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMoviesById } from 'services/movies-api';
+import { Outlet } from 'react-router-dom';
+import { AdditionalInformation } from 'components/AdditionalInformation/AdditionalInformation';
+import {
+  Section,
+  Poster,
+  MovieInfo,
+  Title,
+  Score,
+  Overview,
+  OverviewText,
+  GenresTitle,
+  Genres,
+  Head,
+} from './MovieDetails.styled';
 
 export function MovieDetails() {
   const { movieId } = useParams();
@@ -10,18 +24,40 @@ export function MovieDetails() {
     getMoviesById(movieId).then(setMovieInfo);
   }, [movieId]);
 
-  //   const votes = movieInfo.vote_count / movieInfo.vote_average;
+  const movieYear = new Date(movieInfo.release_date).getFullYear();
+  const votes = Number.parseInt(movieInfo.vote_average / 0.1);
+
+  const getGenres = genres => {
+    if (!genres) {
+      return;
+    }
+    return genres.map(genre => genre.name).join(' ');
+  };
+
+  const getPoster = poster => {
+    if (!poster) {
+      return;
+    }
+    return `https://image.tmdb.org/t/p/w400/${poster}`;
+  };
 
   return (
-    <section>
-      <img
-        src={`https://image.tmdb.org/t/p/w400${movieInfo.poster_path}`}
-        alt=""
-      />
-      <h1>
-        {movieInfo.original_title} ({movieInfo.release_date})
-      </h1>
-      {/* <p>User score: {votes}</p> */}
-    </section>
+    <Section>
+      <Head>
+        <Poster src={getPoster(movieInfo.poster_path)} alt="" />
+        <MovieInfo>
+          <Title>
+            {movieInfo.original_title} ({movieYear})
+          </Title>
+          <Score>User score: {votes}%</Score>
+          <Overview>Overview:</Overview>
+          <OverviewText>{movieInfo.overview}</OverviewText>
+          <GenresTitle>Genres:</GenresTitle>
+          <Genres>{getGenres(movieInfo.genres)}</Genres>
+        </MovieInfo>
+      </Head>
+      <AdditionalInformation />
+      <Outlet />
+    </Section>
   );
 }

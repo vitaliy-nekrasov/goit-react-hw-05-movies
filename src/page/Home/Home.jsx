@@ -31,7 +31,7 @@ export function Home() {
           {trendingFilms.map(film => (
             <StyledLink to={`/movies/${film.id}`} key={film.id}>
               <Poster
-                src={`https://image.tmdb.org/t/p/w400${film.poster_path}`}
+                src={`https://image.tmdb.org/t/p/w400/${film.poster_path}`}
                 alt=""
               />
               <FilmTitle>{film.title}</FilmTitle>
