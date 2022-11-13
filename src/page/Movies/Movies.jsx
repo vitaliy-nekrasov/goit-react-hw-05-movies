@@ -1,14 +1,12 @@
 import { useSearchParams } from 'react-router-dom';
-import { Wrapper, Form, Label, Input, Button } from './Movies.styled';
+import { Wrapper, Form, Label, Input, Button, Text } from './Movies.styled';
 import { getMovies } from 'services/movies-api';
 import { useState, useEffect } from 'react';
 import { MovieList } from 'components/MovieList/MovieList';
-import { Error } from 'components/Error/Error';
 
 export function Movies() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
-  const [error, setError] = useState(null);
   const searchQuery = searchParams.get('query') ?? '';
 
   useEffect(() => {
@@ -17,10 +15,7 @@ export function Movies() {
     }
     getMovies(searchQuery)
       .then(setMovies)
-      .catch(error => {
-        setError(error.message);
-        console.log(error);
-      });
+      .catch(error => console.log(error));
   }, [searchQuery]);
 
   const onSubmit = e => {
@@ -39,12 +34,11 @@ export function Movies() {
           </Label>
           <Button type="submit">Search movie</Button>
         </Form>
-        {movies.length !== 0 || error === null ? (
-          <MovieList items={movies} />
+        {searchQuery !== '' && movies.length === 0 ? (
+          <Text>Sorry but we don`t find movies! :(</Text>
         ) : (
-          <Error message={error} />
+          <MovieList items={movies} />
         )}
-        {}
       </Wrapper>
     </section>
   );

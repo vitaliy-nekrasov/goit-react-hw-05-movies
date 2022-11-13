@@ -57,3 +57,7 @@ export const Button = styled.button`
     background-color: ${p => p.theme.colors.hover};
   }
 `;
+
+export const Text = styled.h2`
+  color: ${p => p.theme.colors.filmCard};
+`;
