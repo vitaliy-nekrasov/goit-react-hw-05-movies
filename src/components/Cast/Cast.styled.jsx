@@ -18,7 +18,7 @@ export const Image = styled.img`
   border: ${p => p.theme.space[1]} solid ${p => p.theme.colors.hover};
   overflow: hidden;
   margin-bottom: ${p => p.theme.space[3]};
-  min-width: 260px;
+  min-width: 250px;
   max-height: 400px;
 `;
 export const Name = styled.p``;
