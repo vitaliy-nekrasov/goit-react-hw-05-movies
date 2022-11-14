@@ -1,5 +1,6 @@
 import { Message } from './Error.styled';
 import { Box } from 'components/Box/Box';
+import PropTypes from 'prop-types';
 
 export function Error({ message }) {
   return (
@@ -10,3 +11,7 @@ export function Error({ message }) {
     </Box>
   );
 }
+
+Error.propTypes = {
+  message: PropTypes.string.isRequired,
+};

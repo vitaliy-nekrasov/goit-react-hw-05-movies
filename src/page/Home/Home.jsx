@@ -12,7 +12,7 @@ import {
 
 export default function Home() {
   const [trendingFilms, setTrendingFilms] = useState([]);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     getTrendingMovies()
@@ -39,9 +39,7 @@ export default function Home() {
           ))}
         </Gallery>
       )}
-      {trendingFilms.length === 0 && error !== null && (
-        <Error message={error} />
-      )}
+      {trendingFilms.length === 0 && error !== '' && <Error message={error} />}
     </Section>
   );
 }
