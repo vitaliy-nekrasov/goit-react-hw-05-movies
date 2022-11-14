@@ -19,7 +19,7 @@ export const Image = styled.img`
   overflow: hidden;
   margin-bottom: ${p => p.theme.space[3]};
   min-width: 250px;
-  max-height: 400px;
+  max-height: 390px;
 `;
 export const Name = styled.p``;
 export const Character = styled.p``;
