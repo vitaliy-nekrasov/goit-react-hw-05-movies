@@ -25,7 +25,9 @@ export const StyledLink = styled(Link)`
   color: ${p => p.theme.colors.black};
 `;
 
-export const Poster = styled.img``;
+export const Poster = styled.img`
+  min-height: 500px;
+`;
 
 export const FilmTitle = styled.p`
   font-size: ${p => p.theme.fontSizes.m};

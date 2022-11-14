@@ -11,7 +11,7 @@ import {
   Span,
 } from './Cast.styled';
 
-export function Cast() {
+export default function Cast() {
   const { movieId } = useParams();
   const [castInfo, setCastInfo] = useState([]);
 

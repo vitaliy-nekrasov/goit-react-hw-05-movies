@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState, Suspense } from 'react';
+import { useParams, Outlet, useLocation } from 'react-router-dom';
 import { getMoviesById } from 'services/movies-api';
-import { Outlet } from 'react-router-dom';
 import { AdditionalInformation } from 'components/AdditionalInformation/AdditionalInformation';
 import {
   Section,
@@ -14,11 +13,14 @@ import {
   GenresTitle,
   Genres,
   Head,
+  GoBackBtn,
+  FaBackspaceStyled,
 } from './MovieDetails.styled';
 
-export function MovieDetails() {
+export default function MovieDetails() {
   const { movieId } = useParams();
   const [movieInfo, setMovieInfo] = useState({});
+  const location = useLocation();
 
   useEffect(() => {
     getMoviesById(movieId).then(setMovieInfo);
@@ -41,8 +43,14 @@ export function MovieDetails() {
     return `https://image.tmdb.org/t/p/w400/${poster}`;
   };
 
+  const backLinkHref = location.state?.from ?? { pathname: '/' };
+
   return (
     <Section>
+      <GoBackBtn to={backLinkHref}>
+        <FaBackspaceStyled />
+        Go back
+      </GoBackBtn>
       <Head>
         <Poster src={getPoster(movieInfo.poster_path)} alt="" />
         <MovieInfo>
@@ -56,8 +64,10 @@ export function MovieDetails() {
           <Genres>{getGenres(movieInfo.genres)}</Genres>
         </MovieInfo>
       </Head>
-      <AdditionalInformation />
-      <Outlet />
+      <AdditionalInformation link={backLinkHref} />
+      <Suspense fallback={null}>
+        <Outlet />
+      </Suspense>
     </Section>
   );
 }

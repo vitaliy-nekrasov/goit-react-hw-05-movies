@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getMoviesReviews } from 'services/movies-api';
 import { Wrapper, List, Item, Author, Text, Span } from './Reviews.styled';
 
-export function Reviews() {
+export default function Reviews() {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState([]);
 

@@ -3,18 +3,24 @@ import { Wrapper, Form, Label, Input, Button, Text } from './Movies.styled';
 import { getMovies } from 'services/movies-api';
 import { useState, useEffect } from 'react';
 import { MovieList } from 'components/MovieList/MovieList';
+import { Loader } from 'components/Loader/Loader';
 
-export function Movies() {
+export default function Movies() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const searchQuery = searchParams.get('query') ?? '';
 
   useEffect(() => {
     if (searchQuery === '') {
       return;
     }
+    setIsLoading(true);
     getMovies(searchQuery)
-      .then(setMovies)
+      .then(movies => {
+        setMovies(movies);
+        setIsLoading(false);
+      })
       .catch(error => console.log(error));
   }, [searchQuery]);
 
@@ -34,7 +40,8 @@ export function Movies() {
           </Label>
           <Button type="submit">Search movie</Button>
         </Form>
-        {searchQuery !== '' && movies.length === 0 ? (
+        {isLoading === true && <Loader />}
+        {searchQuery !== '' && movies.length === 0 && isLoading === false ? (
           <Text>Sorry but we don`t find movies! :(</Text>
         ) : (
           <MovieList items={movies} />
